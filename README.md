@@ -140,9 +140,51 @@ john --show id_rsa.hashes
   <img src="screenshots/17.png" width="738">
 </p>
 
-The 
+Unfortunately the SSH key doesn't work to login as Matt user on the box.
+While on the box, we can switch to ```Matt``` user and supply password as ```computer2008```
 
+```
+su Matt
+```
 
+<p align="center">
+  <img src="screenshots/14.png" width="738">
+</p>
 
+Finally the User Flag is retrieved.
 
+<p align="center">
+  <img src="screenshots/15.png" width="738">
+</p>
 
+# Getting a root shell
+
+The Port 10000 is also open and runs a Webmin interface (Version 1.910) 
+
+<p align="center">
+  <img src="screenshots/20.png" width="738">
+</p>
+
+The Username & Password found above serves as a valid login credentials to the Webmin server.
+
+<p align="center">
+  <img src="screenshots/21.png" width="738">
+</p>
+
+The Webmin Version 1.910 contains 'Package Updates' Remote Command Execution (Metasploit) Vulnerability.
+
+* Start the Metasploit using following command:
+
+```
+msfdb run
+```
+
+<p align="center">
+  <img src="screenshots/19.png" width="738">
+</p>
+
+* Type the following commands to configure the exploit:
+
+```
+
+```
