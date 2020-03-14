@@ -143,7 +143,7 @@ john --show id_rsa.hashes
   <img src="screenshots/17.png" width="738">
 </p>
 
-Unfortunately the SSH key doesn't work to login as Matt user on the box.
+Unfortunately, the SSH key doesn't work to login as Matt user on the box.
 While on the box, we can switch to ```Matt``` user and supply password as ```computer2008```
 
 ```
