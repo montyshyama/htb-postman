@@ -1,4 +1,4 @@
-# Hack The Box - Postman - Writeup By <a href="https://montyshyama.me/">Monty Shyama</a>
+# Hack The Box - Postman - Writeup by <a href="https://montyshyama.me/">Monty Shyama</a>
 
 <p align="center">
   <img src="screenshots/1.png" width="738">
