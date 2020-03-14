@@ -80,5 +80,6 @@ Finally we get a shell as redis user on the box.
 
 # Privilege Escalation
 
-
+Lets transfer Local Linux Enumeration & Privilege Escalation Checks script to the compromised script via Python server.
+The script can be found <a href="https://github.com/rebootuser/LinEnum">here.</a>
 
