@@ -40,7 +40,7 @@ config get dir
   <img src="screenshots/6.png" width="738">
 </p>
 
-The path to ssh is found: ```/var/lib/redis/.ssh```
+The path to SSH is found: ```/var/lib/redis/.ssh```
 
 
 # Exploitation
