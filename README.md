@@ -122,8 +122,25 @@ chmod +x linenum.sh
   <img src="screenshots/13.png" width="738">
 </p>
 
+Save this key on the local machine and try to brute-force it to find a possible candidate for the passphrase.
 
+<p align="center">
+  <img src="screenshots/16.png" width="738">
+</p>
 
+Type the following commands:
+
+```
+./ssh2john.py id_rsa.bak > id_rsa.hashes
+john id_rsa.hashes --wordlist=/usr/share/wordlists/rockyou.txt
+john --show id_rsa.hashes
+```
+
+<p align="center">
+  <img src="screenshots/17.png" width="738">
+</p>
+
+The 
 
 
 
